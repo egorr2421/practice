@@ -17,9 +17,15 @@ class Db
         $this->db = new PDO('mysql:dbname='.$config['name'].';host='.$config['host'].'',$config['user'],$config['pass']);
     }
 
-    public function query($quety){
-        //$this->db->prepare ("SELECT * FROM accounts")->bindValue (:);
-    return $this->db->query ("SELECT * FROM accounts")->fetchAll (PDO::FETCH_ASSOC);
-
+    public function query($quety,$par = []){
+        $st=$this->db->prepare ($quety);
+        if(!empty($par)){
+            foreach ($par as $key => $value)
+            $st->bindValue (":".$key,$value);
+            }
+        if($st->execute()) {
+            return $st->fetchAll (PDO::FETCH_ASSOC);
+        }
+        return false;
     }
 }

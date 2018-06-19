@@ -4,7 +4,11 @@ $obj = new Router();
 $obj->run ();
 $db = new Db();
 echo "<br>";
-echo "<br>";
-echo "<br>";
-var_dump ($db->query("asd")[0]);
+
+
+foreach ($db->query("SELECT * FROM accounts WHERE id = :id or id = :id2",["id"=>3,"id2"=>1]) as $value){
+    echo "<br>";
+    var_dump ($value);
+}
+
 ?>
