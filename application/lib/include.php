@@ -1,4 +1,5 @@
 <?php
+require "application/core/Model.php";
 require "application/core/View.php";
 require "application/core/Controller.php";
 require "application/core/Router.php";

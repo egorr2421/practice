@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Egor
- * Date: 19.06.2018
- * Time: 15:50
- */
+
 
 class Db
 {
@@ -13,7 +8,6 @@ class Db
     public function __construct()
     {
         $config = require "application/config/db.php";
-        var_dump($config);
         $this->db = new PDO('mysql:dbname='.$config['name'].';host='.$config['host'].'',$config['user'],$config['pass']);
     }
 
