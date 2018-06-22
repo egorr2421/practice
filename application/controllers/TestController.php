@@ -15,6 +15,7 @@ class TestController extends Controller
 
     public function testAction(){
      $this->route["title"]="test";
+     $this->route["user"] = $this->model->getUser();
      $this->view->render($this->route);
     }
 }

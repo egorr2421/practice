@@ -5,8 +5,8 @@ class MainController extends Controller
 {
 
     public function indexAction(){
-        $this->route["title"]="main";
-        $this->route["user"]= $this->model->getUser();
+        $this->route["title"]="Новости";
+        $this->route["news"]= $this->model->getLastNews();
         $this->view->render($this->route);
     }
 

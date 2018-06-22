@@ -12,6 +12,7 @@ class Router
             $this->routes[$key] = $values;
         }
         //var_dump($this->routes);
+
     }
     public function match(){
         $way = trim ($_SERVER['REQUEST_URI'],'/');
