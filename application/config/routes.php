@@ -5,6 +5,19 @@ return [
         'controller' => 'main',
         'action' => 'index',
     ],
+    'top' => [
+        'controller' => 'main',
+        'action' => 'top',
+    ],
+    'category' => [
+        'controller' => 'main',
+        'action' => 'category',
+    ],
+    'getnews' => [
+        'controller' => 'main',
+        'action' => 'getnew',
+    ],
+
 
     'account/login' => [
         'controller' => 'account',
@@ -14,18 +27,5 @@ return [
     'account/register' => [
         'controller' => 'account',
         'action' => 'register',
-    ],
-
-    'account/test' => [
-        'controller' => 'account',
-        'action' => 'test',
-    ],
-    'test/test' => [
-        'controller' => 'test',
-        'action' => 'test',
-    ],
-    'contact' => [
-        'controller' => 'main',
-        'action' => 'contact',
     ],
 ];
