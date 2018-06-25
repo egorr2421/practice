@@ -33,4 +33,9 @@ return [
         'controller' => 'account',
         'action' => 'profile',
     ],
+
+    'account/exit' => [
+    'controller' => 'account',
+    'action' => 'exit',
+],
 ];

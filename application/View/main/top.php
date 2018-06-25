@@ -3,7 +3,11 @@
 <div class="menu">
     <ul>
         <li>
-            <a href="/account/login">Личный кабинет</a>
+            <a href="<?php if(isset($_SESSION['account'])){
+                echo "/account/profile";
+            }else{
+                echo "/account/login";
+            }?>">Личный кабинет</a>
             <a href="/category">Категории</a>
             <a href="/top">Топ</a>
             <a href="/">Новости</a>

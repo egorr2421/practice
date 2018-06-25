@@ -1,6 +1,8 @@
 <?php
 namespace application\controllers;
 use application\core\Controller;
+use application\core\View;
+
 class AccountController extends Controller
 {
 
@@ -15,7 +17,9 @@ class AccountController extends Controller
                 exit("Eror pass");
             }
             if($this->model->ChekUser($_POST['name'],0,$_POST['pass'])){
-                exit("find");
+                $_SESSION['account']=$this->model->getUser($_POST['name'])[0];
+//                header('Location: /account/profile');
+                exit(json_encode(['url'=>'account/profile']));
             }else{
                 exit("dont find");
             }
@@ -69,11 +73,21 @@ class AccountController extends Controller
         $this->view->render ($rout);
     }
     public function profileAction(){
-        $rout = $this->route;
-        $rout['title'] = "My ac ";
-        $this->view->render ($rout);
-    }
+        if(isset($_SESSION['account'])) {
+            $rout = $this->route;
+            $rout['news'] = $this->model->getNewsForPer ($_SESSION['account']['id']);
+            $rout['title'] = "My ac ";
+            $this->view->render ($rout);
+        }else{
+            View::error (404);
+        }
+        }
     public function testAction(){
         echo "Main/testAction";
+    }
+    public function exitAction(){
+        $_SESSION = [];
+        session_destroy ();
+        header('Location: /account/login');
     }
 }

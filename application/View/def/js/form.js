@@ -12,7 +12,11 @@ $(document).ready(function() {
 			cache: false,
 			processData: false,
 			success: function(result) {
-				alert(result);
+                alert(result);
+                json =jQuery.parseJSON(result);
+			    if(typeof json.url != 'undefined') {
+                    window.location.href = '/' + json.url;
+                }else{}
 			},
 		});
 

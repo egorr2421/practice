@@ -166,6 +166,43 @@ h2{
 .botom{
     margin-bottom: 120px;
 }
-.file-avatar:after{
-    content: "";
+.i-m {
+    padding-top: 20px;
+    height: 250px;
+}
+.avatar{
+    margin-left: 20px;
+    height:100%;
+    float: left;
+}
+.about-me{
+
+    margin-left: 20px;
+    float: left;
+}
+.bt-exit{
+    float: right;
+    margin-right: 40px;
+    margin-top: 20px;
+}
+.bt-exit a:hover{
+    background-color: #0D181D;
+}
+.bt-exit a {
+    transition: 0.5s;
+    display: block;
+    text-decoration: none;
+    color:white;
+    background-color: #660000;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
 }

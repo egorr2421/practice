@@ -31,4 +31,10 @@ class Account  extends \Model
     public function RegisterUser($name,$email,$pass){
        $this->db->query ( "INSERT INTO accounts(`login`, `passwd`, `Email`) VALUES ('".$name."','".password_hash($pass,PASSWORD_DEFAULT)."','".$email."')");
     }
+    public function getUser($name){
+        return $this->db->query( "SELECT * FROM accounts where login = $name");
+    }
+    public function getNewsForPer($id){
+        return $this->db->query ("SELECT * FROM `news` WHERE autor = (SELECT id FROM accounts WHERE id=$id)");
+    }
 }
