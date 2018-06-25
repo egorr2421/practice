@@ -176,16 +176,17 @@ h2{
     float: left;
 }
 .about-me{
-
     margin-left: 20px;
     float: left;
 }
 .bt-exit{
+    text-align: center;
     float: right;
     margin-right: 40px;
     margin-top: 20px;
 }
 .bt-exit a:hover{
+
     background-color: #0D181D;
 }
 .bt-exit a {
@@ -205,4 +206,51 @@ hr {
     background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
     background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
     background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+.add-form{
+    width: 90%;
+    margin: auto;
+    margin-top:10px;
+}
+.title-add{
+    width: 100%;
+
+}
+.title-add label{
+    font-size:20px;
+}
+.title-add input{
+    border: 0px;
+    border-bottom: 1px solid #B8C3C8;
+    font-size:18px;
+    padding: 5px;
+}
+.title-add input:focus{
+    outline: none;
+}
+.text-post{
+    margin-top:20px;
+    width: 100%;
+
+}
+.text-post label{
+    font-size:20px;
+}
+.text-post textarea{
+    font-family: 'Open Sans' , 'sans-serif';
+    font-size:16px;
+    margin-top:10px;
+    resize: none;
+    width: 100%;
+    height: 300px;
+}
+.sub{
+    margin-top:15px;
+    float: right;
+    background-color: #660000;
+    border: 0px;
+    padding: 10px;
+    font-size: 16px;
+    color:white;
+    border-radius: 5px;
 }

@@ -24,7 +24,10 @@
     </div>
     <div class="bt-exit">
         <a href="/account/exit">Exit</a>
+        <br>
+        <a href="#" class="addpost">Add Post</a>
     </div>
+
 
 </div>
     <h2 style="text-align:center;margin-top: 10px">My posts</h2>

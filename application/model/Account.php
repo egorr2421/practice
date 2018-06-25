@@ -37,4 +37,10 @@ class Account  extends \Model
     public function getNewsForPer($id){
         return $this->db->query ("SELECT * FROM `news` WHERE autor = (SELECT id FROM accounts WHERE id=$id)");
     }
+    public function RegisterPost($title,$des,$autor,$id_cat,$data){
+        return $this->db->query ( "INSERT INTO news(`Title`, `description`, `autor`, `id_cat` ,`Date_cr`) VALUES ('".$title."','".$des."','".$autor."','".$id_cat."','".$data."')");
+    }
+    public function addCats($id){
+        return $this->db->query ( "UPDATE `category` SET `amount`=`amount`+1 WHERE id=$id");
+    }
 }

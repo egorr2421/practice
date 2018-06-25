@@ -8,6 +8,9 @@ class AccountController extends Controller
 
 
     public function loginAction(){
+        if(isset($_SESSION['account'])) {
+        $this->exitAction ();
+        }
         if(!empty($_POST)){
         if(!empty($_POST['name']) and !empty($_POST['pass'])){
             if(strlen ($_POST['name'])<3 or strlen ($_POST['name']) >20 ){
@@ -89,5 +92,11 @@ class AccountController extends Controller
         $_SESSION = [];
         session_destroy ();
         header('Location: /account/login');
+    }
+    public function addAction(){
+       $leng=date('o-d-H');
+       $this->model->RegisterPost($_POST['title'],$_POST['text'],$_SESSION['account']['id'],$_POST['category'],date("Y-m-d"));
+       $this->model->addCats($_POST['category']);
+       exit(json_encode(['url'=>'account/profile']));
     }
 }

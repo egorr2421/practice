@@ -14,7 +14,7 @@ $(document).ready(function() {
 			success: function(result) {
                 alert(result);
                 json =jQuery.parseJSON(result);
-			    if(typeof json.url != 'undefined') {
+			    if(json.url) {
                     window.location.href = '/' + json.url;
                 }else{}
 			},
@@ -102,6 +102,44 @@ $(document).ready(function() {
             },
         });
 
+    });
+
+    $('.addpost').click(function(event) {
+                $(".content").empty();
+        $(".content").append(
+            "\t\t\t\t<div class=\"add-form\">\n" +
+            "\t\t\t\t<div class=\"title-add\">\n" +
+            "\t\t\t\t<label>Title</label> <br>\n" +
+            "\t\t\t\t<input class=\"input-add\" type=\"text\" name=\"title\"></div>\n" +
+            "\t\t\t\t<div class=\"text-post\">\n" +
+            "\t\t\t\t<label>Text</label> <br>\n" +
+            "\t\t\t\t<textarea class=\"post\"></textarea> \n" +
+            "\t\t\t\t</div>\t\n" +
+            "<select class=\"sub select-cat\" style=\"float:left;\">\n" +
+            "                <option value='1' >Спорт</optionс>\n" +
+            "                <option value='2'>Искуство</option>\n" +
+            "                <option value='5' >Политика</optionс>\n" +
+            "                <option value='6' >Развличение</optionс>\n" +
+            "                <option value='9' >Технологии</optionс>\n" +
+            "                <option value='10' >IT</optionс>\n" +
+            "            \t</select> " +
+            "\t\t\t\t<input type=\"submit\" class=\"sub button-add\" name=\"sub\">\n" +
+            "\t\t\t\t</div>\n");
+        $('.button-add').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: "post",
+                url: "/account/add",
+                data: {'title':$(".input-add").val(),'text':$(".post").val(),'category':$('.select-cat').val()},
+                success: function(result) {
+                    json =jQuery.parseJSON(result);
+                    if(json.url) {
+                        window.location.href = '/' + json.url;
+                    }
+                }
+
+        });
+        });
     });
 
 });

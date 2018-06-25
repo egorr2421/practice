@@ -37,5 +37,9 @@ return [
     'account/exit' => [
     'controller' => 'account',
     'action' => 'exit',
-],
+    ],
+    'account/add' => [
+        'controller' => 'account',
+        'action' => 'add',
+    ],
 ];
