@@ -4,7 +4,7 @@
 <div class="menu">
     <ul>
         <li>
-            <a href="#">Личный кабинет</a>
+            <a href="/account/login">Личный кабинет</a>
             <a href="/category">Категории</a>
             <a href="/top">Топ</a>
             <a href="/">Новости</a>

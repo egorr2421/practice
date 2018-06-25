@@ -30,7 +30,9 @@ class MainController extends Controller
      }
      public function getnewAction(){
         if(!empty($_POST['id'])){
+            $ans = $this->model->addView($_POST['id']);
             $ans = $this->model->getNews($_POST['id']);
+
             exit(json_encode($ans));
         }
      }

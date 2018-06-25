@@ -28,4 +28,9 @@ return [
         'controller' => 'account',
         'action' => 'register',
     ],
+
+    'account/profile' => [
+        'controller' => 'account',
+        'action' => 'profile',
+    ],
 ];

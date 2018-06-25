@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src="/application/View/def/js/jquery.js"></script>
 	<script type="text/javascript" src="/application/View/def/js/form.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <title><?php echo $title ?></title>
 </head>
 <body>
