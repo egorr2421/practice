@@ -48,4 +48,9 @@ return [
         'controller' => 'account',
         'action' => 'dell',
     ],
+
+    'account/edit' => [
+        'controller' => 'account',
+        'action' => 'edit',
+    ],
 ];

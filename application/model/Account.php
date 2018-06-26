@@ -48,4 +48,8 @@ class Account  extends \Model
         return $this->db->query ( "DELETE from `news` WHERE  id=$id");
 
     }
+    public function updatenews($id,$tytle,$cat,$text){
+        return $this->db->query ( "UPDATE `news` SET `Title`= '".$tytle."' , `id_cat`= '".$cat."' ,`description`= '".$text."'  WHERE id= $id");
+
+    }
 }

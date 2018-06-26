@@ -103,4 +103,8 @@ class AccountController extends Controller
         $this->model->dellNews($_POST['id']);
         $this->profileAction();
     }
+    public function editAction(){
+        $this->model->updatenews($_POST['id'],$_POST['tatle'],$_POST['cat'],$_POST['text']);
+        $this->profileAction();
+    }
 }

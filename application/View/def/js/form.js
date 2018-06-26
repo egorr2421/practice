@@ -154,4 +154,51 @@ $(document).ready(function() {
 
         });
     });
+    $('.edit-post').click(function(event) {
+        $('.content').empty();
+        $.ajax({
+            type: "post",
+            url: "/getnews",
+            data: {'id':$(this).attr('name')},
+            success: function(result) {
+                result = jQuery.parseJSON(result);
+                $.each(result, function (i, item) {
+                    $(".content").append(
+                        "\t\t\t\t<div class=\"add-form\">\n" +
+                        "\t\t\t\t<div class=\"title-add\">\n" +
+                        "\t\t\t\t<label>Title</label> <br>\n" +
+                        "\t\t\t\t<input class=\"input-add input-edit\" type=\"text\" name=\"title\" value=\""+item.Title+"\"></div>\n" +
+                        "\t\t\t\t<div class=\"text-post\">\n" +
+                        "\t\t\t\t<label>Text</label> <br>\n" +
+                        "\t\t\t\t<textarea class=\"post edit-post\" >"+item.description+"</textarea> \n" +
+                        "\t\t\t\t</div>\t\n" +
+                        "<select class=\"sub select-cat\" style=\"float:left;\">\n" +
+                        "                <option value='1' >Спорт</optionс>\n" +
+                        "                <option value='2' >Искуство</option>\n" +
+                        "                <option value='5' >Политика</optionс>\n" +
+                        "                <option value='6' >Развличение</optionс>\n" +
+                        "                <option value='9' >Технологии</optionс>\n" +
+                        "                <option value='10' >IT</optionс>\n" +
+                        "            \t</select> " +
+                        "\t\t\t\t<input type=\"submit\" class=\"sub button-add\" name=\""+item.id+"\">\n" +
+                        "\t\t\t\t</div>\n"
+                    );
+                });
+                $('.button-add').click(function (event) {
+               // alert("sad");
+                    $.ajax({
+                        type: "post",
+                        url: "/account/edit",
+                        data: {'id': $(this).attr('name') ,'cat':$('.sub').val(), 'tatle': $('.input-edit').val() , 'text': $('.edit-post').val()},
+                        success: function (result) {
+                            window.location.href = "/account/profile";
+                        },
+                    });
+
+
+
+                });
+            },
+        });
+    });
 });
