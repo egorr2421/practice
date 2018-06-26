@@ -38,8 +38,14 @@ return [
     'controller' => 'account',
     'action' => 'exit',
     ],
+
     'account/add' => [
         'controller' => 'account',
         'action' => 'add',
+    ],
+
+    'account/dell' => [
+        'controller' => 'account',
+        'action' => 'dell',
     ],
 ];

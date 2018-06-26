@@ -78,7 +78,7 @@ class AccountController extends Controller
     public function profileAction(){
         if(isset($_SESSION['account'])) {
             $rout = $this->route;
-            $rout['news'] = $this->model->getNewsForPer ($_SESSION['account']['id']);
+            $rout['news'] = $this->model->getNewsForPer($_SESSION['account']['id']);
             $rout['title'] = "My ac ";
             $this->view->render ($rout);
         }else{
@@ -98,5 +98,9 @@ class AccountController extends Controller
        $this->model->RegisterPost($_POST['title'],$_POST['text'],$_SESSION['account']['id'],$_POST['category'],date("Y-m-d"));
        $this->model->addCats($_POST['category']);
        exit(json_encode(['url'=>'account/profile']));
+    }
+    public function dellAction(){
+        $this->model->dellNews($_POST['id']);
+        $this->profileAction();
     }
 }

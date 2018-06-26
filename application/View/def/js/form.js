@@ -77,7 +77,7 @@ $(document).ready(function() {
         });
 
     });
-    $('.post').click(function(event) {
+    $('.post').click(function(event)  {
         event.preventDefault();
         $.ajax({
             type: "post",
@@ -141,5 +141,17 @@ $(document).ready(function() {
         });
         });
     });
+    $('.del-post').click(function(event) {
+    let t = $(this).attr('name');
+        $.ajax({
+            type: "post",
+            url: "/account/dell",
+            data: {'id':$(this).attr('name')},
+            success: function(result) {
+                //window.location.href = "/account/profile";
+                $('#'+t).remove();
+            }
 
+        });
+    });
 });

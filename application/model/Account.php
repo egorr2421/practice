@@ -32,7 +32,7 @@ class Account  extends \Model
        $this->db->query ( "INSERT INTO accounts(`login`, `passwd`, `Email`) VALUES ('".$name."','".password_hash($pass,PASSWORD_DEFAULT)."','".$email."')");
     }
     public function getUser($name){
-        return $this->db->query( "SELECT * FROM accounts where login = $name");
+        return $this->db->query( "SELECT * FROM accounts where login = '$name'");
     }
     public function getNewsForPer($id){
         return $this->db->query ("SELECT * FROM `news` WHERE autor = (SELECT id FROM accounts WHERE id=$id)");
@@ -42,5 +42,10 @@ class Account  extends \Model
     }
     public function addCats($id){
         return $this->db->query ( "UPDATE `category` SET `amount`=`amount`+1 WHERE id=$id");
+    }
+    public function dellnews($id){
+        $this->db->query ( "UPDATE `category` SET `amount`=`amount`-1 WHERE id= (SELECT id_cat from `news` where id=$id)");
+        return $this->db->query ( "DELETE from `news` WHERE  id=$id");
+
     }
 }
