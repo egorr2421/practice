@@ -12,11 +12,14 @@ $(document).ready(function() {
 			cache: false,
 			processData: false,
 			success: function(result) {
-                alert(result);
+                //alert(result);
                 json =jQuery.parseJSON(result);
 			    if(json.url) {
                     window.location.href = '/' + json.url;
-                }else{}
+                }
+                if(json.error) {
+                    swal("Error",json.error, "error");
+                }
 			},
 		});
 
@@ -143,16 +146,31 @@ $(document).ready(function() {
     });
     $('.del-post').click(function(event) {
     let t = $(this).attr('name');
-        $.ajax({
-            type: "post",
-            url: "/account/dell",
-            data: {'id':$(this).attr('name')},
-            success: function(result) {
-                //window.location.href = "/account/profile";
-                $('#'+t).remove();
-            }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this post!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Your post has been deleted!", {
+                        icon: "success",
+                    });
+                    $.ajax({
+                        type: "post",
+                        url: "/account/dell",
+                        data: {'id':$(this).attr('name')},
+                        success: function(result) {
+                            //window.location.href = "/account/profile";
+                            $('#'+t).remove();
+                        }
 
-        });
+                    });
+                } else {
+                }
+            });
     });
     $('.edit-post').click(function(event) {
         $('.content').empty();
@@ -171,7 +189,7 @@ $(document).ready(function() {
                         "\t\t\t\t<div class=\"text-post\">\n" +
                         "\t\t\t\t<label>Text</label> <br>\n" +
                         "\t\t\t\t<textarea class=\"post edit-post\" >"+item.description+"</textarea> \n" +
-                        "\t\t\t\t</div>\t\n" +
+                        "\t\t\t\t</div>\t\n" +  
                         "<select class=\"sub select-cat\" style=\"float:left;\">\n" +
                         "                <option value='1' >Спорт</optionс>\n" +
                         "                <option value='2' >Искуство</option>\n" +

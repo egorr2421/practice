@@ -70,6 +70,7 @@ h2{
     padding-left: 50px;
 }
 .tatle a {
+    cursor: pointer;
     text-decoration: none;
     color:black;
 }
@@ -254,3 +255,4 @@ hr {
     color:white;
     border-radius: 5px;
 }
+

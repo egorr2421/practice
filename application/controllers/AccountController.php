@@ -14,24 +14,25 @@ class AccountController extends Controller
         if(!empty($_POST)){
         if(!empty($_POST['name']) and !empty($_POST['pass'])){
             if(strlen ($_POST['name'])<3 or strlen ($_POST['name']) >20 ){
-                exit("Eror name");
+                exit(json_encode(['error'=>'incorrect name']));
             }
             if(strlen ($_POST['pass'])<6){
-                exit("Eror pass");
+                exit(json_encode(['error'=>'incorrect pass']));
             }
             if($this->model->ChekUser($_POST['name'],0,$_POST['pass'])){
                 $_SESSION['account']=$this->model->getUser($_POST['name'])[0];
 //                header('Location: /account/profile');
                 exit(json_encode(['url'=>'account/profile']));
             }else{
-                exit("dont find");
+                exit(json_encode(['error'=>'не верный логин или пароль']));
+
             }
         }else{
             if(!empty($_POST['name'])){
-            exit("name");
+                exit(json_encode(['error'=>'plis enter pass']));
             }
             if(!empty($_POST['pass'])){
-                exit("pass");
+                exit(json_encode(['error'=>'plis enter name']));
             }
         }
         }
@@ -43,16 +44,18 @@ class AccountController extends Controller
         if(!empty($_POST)){
             if(!empty($_POST['name']) and !empty($_POST['pass']) and !empty($_POST['email'])){
                 if(strlen ($_POST['name'])<3 or strlen ($_POST['name']) >20 or strlen ($_POST['email']) <5){
-                    exit("Eror name");
+                    exit(json_encode(['error'=>'incorrect name']));
                 }
                 if(strlen ($_POST['pass'])<6){
-                    exit("Eror pass");
+                    exit(json_encode(['error'=>'incorrect pass']));
                 }
                 if($this->model->ChekUser($_POST['name'],$_POST['email'],0)){
-                    exit("i can not register");
+                    exit(json_encode(['error'=>'дaнный пользователь уже зареистрирован']));
                 }
                 $this->model->RegisterUser($_POST['name'],$_POST['email'],$_POST['pass']);
-                exit("i can register");
+                $_SESSION['account']=$this->model->getUser($_POST['name'])[0];
+//                header('Location: /account/profile');
+                exit(json_encode(['url'=>'account/profile']));
 //                    exit(password_verify ("123456",password_hash($_POST['pass'],PASSWORD_DEFAULT)));
 
 
@@ -82,7 +85,7 @@ class AccountController extends Controller
             $rout['title'] = "My ac ";
             $this->view->render ($rout);
         }else{
-            View::error (404);
+            View::error (403);
         }
         }
     public function testAction(){
