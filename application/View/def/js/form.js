@@ -95,7 +95,7 @@ $(document).ready(function() {
                         "\n" +
                         "        <h2 class=\"tatle\"><a  name="+item.id+" href=\"#\">"+item.Title+"</a></h2>\n" +
                         "            <div class=\"text\" style=\"height: 100%; \">\n" +
-                        "                <p>"+item.description+"></p></div>\n" +
+                        "                <p>"+item.description+"</p></div>\n" +
                         "            <div class=\"view\">\n" +
                         "\n" +
                         "                <p>Добавлено"+item.Date_cr+" View:"+item.veiw+"</p>\n" +
@@ -189,7 +189,7 @@ $(document).ready(function() {
                         "\t\t\t\t<div class=\"text-post\">\n" +
                         "\t\t\t\t<label>Text</label> <br>\n" +
                         "\t\t\t\t<textarea class=\"post edit-post\" >"+item.description+"</textarea> \n" +
-                        "\t\t\t\t</div>\t\n" +  
+                        "\t\t\t\t</div>\t\n" +
                         "<select class=\"sub select-cat\" style=\"float:left;\">\n" +
                         "                <option value='1' >Спорт</optionс>\n" +
                         "                <option value='2' >Искуство</option>\n" +
